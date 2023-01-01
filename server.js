@@ -13,7 +13,7 @@ const path = require("path");
 const app = express();
 
 // Middlewares
-app.use(cors())
+//app.use(cors())
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
@@ -24,6 +24,13 @@ app.use(bodyParser.json());
     credentials: true,
   })
 );*/
+
+app.use(function (req, res, next) {
+  //Enabling CORS
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type")
+  });
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
