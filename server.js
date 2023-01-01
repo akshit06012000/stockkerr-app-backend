@@ -26,13 +26,11 @@ app.use(bodyParser.json());
 );*/
 
 
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8000/');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+const corsConfig = {
+    credentials: true,
+    origin: true,
 };
+app.use(cors(corsConfig));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes Middleware
