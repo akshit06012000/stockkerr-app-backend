@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 // Error Middleware
 app.use(errorHandler);
 // Connect to DB and start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ;
 mongoose.connect('mongodb+srv://akshitvyas_av:carpediem@cluster0.sbxvuce.mongodb.net/Stocker-app?retryWrites=true&w=majority')
   .then(() => {
     app.listen(PORT, () => {
